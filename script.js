@@ -61,10 +61,24 @@ formElement.addEventListener('submit', function(e) {
     console.log(e);
     // this will log the specific nested element whitin the ul that the click is occuring on
     console.log(e.target);
+    console.log(e.target.classList.toggle);
     if (e.target.localName === 'i') {
       console.log('Checkbox was clicked!');
       e.target.classList.toggle('fa-square-check');
       e.target.classList.toggle('fa-square');
+      console.log(e.target.parentNode);
+      e.target.parentNode.classList.toggle('text-muted'); //adding class list on 'li'
+    }
+  });
+
+  const clearButton = document.querySelector('button');
+  clearButton.addEventListener('click', function(e){
+    console.log(e);
+    const checkedItems = document.querySelectorAll('.text-muted');
+    console.log(checkedItems);
+    for (let i = 0; i < checkedItems.length; i++) {
+      console.log(i);
+      checkedItems[i].remove();
     }
   });
 
@@ -75,6 +89,8 @@ formElement.addEventListener('submit', function(e) {
   //   },
   // };
   // player.jump();
+
+
 
 // BONUS LEVEL:
 // add a "RESET" button which clears all of the TO DOs
